@@ -1,0 +1,14 @@
+<table class="table table-striped custab">
+    <thead>
+        <tr>
+           <th>Score</th>
+           <th>Jurisprudencias</th>
+        </tr>
+    </thead>
+    <tbody>
+  {% for row in txtai_data %}  
+     <tr>
+      <td>{{row.score}}</td>
+      <td>{{row.data}}</td>
+     </tr>
+  {% endfor %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!--crear barra de busqueda-->
+<body>
+    <div class="container search-table">
+        <p><h2 align="center">Buscador Jurisprudencias Karpify</h2></p>
+        <div class="search-box">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Search All Fields</h5>
+                </div>
+                <div class="col-md-9">
+                    <input type="text" name="search_text" id="search_text" class="form-control" placeholder="Search all fields e.g. HTML">
+                </div> 
+            </div>
+        </div>
+        <div id="result"></div>
+    </div>
+    <style>
+        .search-table{
+            padding: 10%;
+            margin-top: -6%;
+        }
+    </style>
+</body>
+<!--boton que entregue resultado de la busqueda-->
+<script>
+    $(document).ready(function(){
+        load_data();
+        function load_data(query)
+        {
+            $.ajax({
+                url:"/home",
+                method:"POST",
+                data:{query:query},
+                success:function(data)
+                {
+                    $('#result').html(data);
+                    $("#result").append(data.htmlresponse);
+                }
+            });
+        }
+        $('#search_text').keyup(function(){
+            var search = $(this).val();
+            if(search != ''){
+                load_data(search);
+            }else{
+                load_data();
+            }
+        });
+    });
+
+<body>
+    
+</body>
+</html>
