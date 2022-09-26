@@ -1,8 +1,8 @@
-flask
+Flask
 txtai
 psycopg2
 spacy
-guvicorn
+gunicorn
 pandas
 Jinja2
 json
