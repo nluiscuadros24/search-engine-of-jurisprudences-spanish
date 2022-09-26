@@ -1,0 +1,8 @@
+flask
+txtai
+psycopg2
+spacy
+guvicorn
+pandas
+Jinja2
+json
