@@ -5,4 +5,4 @@ spacy
 gunicorn
 pandas
 Jinja2
-json
+jsonlib
