@@ -11,18 +11,18 @@ from subprocess import Popen, PIPE, STDOUT
 import es_core_news_md
 nlp = es_core_news_md.load()
 from collections import Counter
-import spacy
-from spacy import displacy
+#import spacy
+#from spacy import displacy
 import pandas as pd
 from txtai.pipeline import Similarity
 from txtai.embeddings import Embeddings
 import json
-import pickle
+#import pickle
 
 
 #get secret key
 
-SECRET_KEY = os.urandom(32)
+SECRET_KEY = 'karpify123'
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 
@@ -48,7 +48,7 @@ embeddings.index(txtai_data)
 #query = embeddings.search(search_word, 10)
 #print(query)
  
-conn = psycopg2.connect(database="users", user="postgres", password="karpify", host="localhost", port=5433)
+conn = psycopg2.connect(database="dd242b78kgvt2u", user="ummdozfomcxlwg", password="58780a20e8453fdf1e0c37dbaa05c22954988bc27522d3f3a97e97af589217cf", host="ec2-3-93-206-109.compute-1.amazonaws.com", port=5433)
 @app.route('/')
 def home():
     # Check if user is loggedin

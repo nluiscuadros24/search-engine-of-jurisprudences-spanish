@@ -1,7 +1,8 @@
 Flask
 txtai
 psycopg2
-spacy
 gunicorn
 pandas
 Jinja2
+added -f https://download.pytorch.org/whl/torch_stable.html
+torch==1.12.0+cpu
