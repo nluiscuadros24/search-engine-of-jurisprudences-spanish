@@ -48,16 +48,16 @@ embeddings.index(txtai_data)
 #query = embeddings.search(search_word, 10)
 #print(query)
  
-conn = psycopg2.connect(database="d87gct4qce5m66", user="wmnraxjkzeybsq", password="45e1f9ee429f7806fc9db20a1687c5201be86f244730fbd47db146e3d67aaf5d", host="ec2-3-229-165-146.compute-1.amazonaws.com", port=5432)
-@app.route('/')
-def home():
+#conn = psycopg2.connect(database="d87gct4qce5m66", user="wmnraxjkzeybsq", password="45e1f9ee429f7806fc9db20a1687c5201be86f244730fbd47db146e3d67aaf5d", host="ec2-3-229-165-146.compute-1.amazonaws.com", port=5432)
+#@app.route('/')
+#def home():
     # Check if user is loggedin
-    if 'loggedin' in session:
+    #if 'loggedin' in session:
     
         # User is loggedin show them the home page
-        return render_template('home.html', username=session['username'])
+        #return render_template('home.html', username=session['username'])
     # User is not loggedin redirect to login page
-    return redirect(url_for('login'))
+    #return redirect(url_for('login'))
 
 @app.route("/ajaxlivesearch",methods=["POST","GET"])
 def ajaxlivesearch():
