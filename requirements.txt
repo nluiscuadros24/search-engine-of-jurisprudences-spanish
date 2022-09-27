@@ -22,8 +22,8 @@ Flask-Testing==0.7.1
 collection==0.1.6
 Jinja2==3.0.1
 Werkzeug>=2.2.0
-txtai @ git+https://github.com/neuml/txtai
-transformers==4.20.0
+txtai==4.6.0
+transformers==4.22.1
 psycopg2==2.8.6
 sqlalchemy==1.4.7
 gunicorn==19.9.0
