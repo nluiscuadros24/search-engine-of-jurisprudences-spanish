@@ -60,27 +60,27 @@ def home():
     # User is not loggedin redirect to login page
     #return redirect(url_for('login'))
 
-@app.route("/ajaxlivesearch",methods=["POST","GET"])
-def ajaxlivesearch():
-    if request.method == "POST":
-        search_word = request.form['query']
-        print(search_word)
-        if search_word == "":
-            query = print(txtai_data)
-            employee = query
-        else:
-            query = embeddings.search(search_word, 10)
-            numrows = len(query)
-            employee = query
-            data = []
-            for item in query:
-                row={}
-                row['score'] = item[1]
-                row['data'] = txtai_data[item[0]]
-                data.append(row)
-                print(data)
+#@app.route("/ajaxlivesearch",methods=["POST","GET"])
+#def ajaxlivesearch():
+    #if request.method == "POST":
+        #search_word = request.form['query']
+        #print(search_word)
+        #if search_word == "":
+            #query = print(txtai_data)
+            #employee = query
+        #else:
+            #query = embeddings.search(search_word, 10)
+            #numrows = len(query)
+            #employee = query
+            #data = []
+            #for item in query:
+                #row={}
+                #row['score'] = item[1]
+                #row['data'] = txtai_data[item[0]]
+                #data.append(row)
+                #print(data)
 
-    return jsonify({'htmlresponse': render_template('response.html', txtai_data=data)})
+    #return jsonify({'htmlresponse': render_template('response.html', txtai_data=data)})
 
 
 @app.route('/login/', methods=['GET', 'POST'])
