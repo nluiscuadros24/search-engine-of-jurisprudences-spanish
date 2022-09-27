@@ -6,6 +6,7 @@ catalogue==2.0.8
 certifi==2022.6.15.1
 charset-normalizer==2.1.1
 click==8.0.3
+click~=7.0
 colorama==0.4.5
 confection==0.0.1
 config==0.5.1
