@@ -14,7 +14,7 @@ from collections import Counter
 #import spacy
 #from spacy import displacy
 import pandas as pd
-from txtai.pipeline import Similarity
+#from txtai.pipeline import Similarity
 from txtai.embeddings import Embeddings
 import json
 #import pickle
