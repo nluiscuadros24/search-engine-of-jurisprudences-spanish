@@ -6,12 +6,15 @@ Flask-Script==2.0.5
 Flask-SQLAlchemy==2.4.0
 Flask-WTF==0.14.2
 Flask-User==1.0.1.5
+collection==0.1.6
 Jinja2==3.0.1
+Werkzeug
 txtai
 psycopg2==2.8.6
 sqlalchemy==1.4.7
 gunicorn==19.9.0
 pandas==1.5.0
+jsonlib==1.6.1
 jsonschema==3.2.0
 -f https://download.pytorch.org/whl/torch_stable.html
 torch==1.12.0+cpu

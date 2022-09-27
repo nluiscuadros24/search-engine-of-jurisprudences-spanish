@@ -8,8 +8,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 #from elasticsearch import Elasticsearch, helpers 
 import os
 from subprocess import Popen, PIPE, STDOUT
-import es_core_news_md
-nlp = es_core_news_md.load()
+#import es_core_news_md
+#nlp = es_core_news_md.load()
 from collections import Counter
 #import spacy
 #from spacy import displacy
