@@ -48,7 +48,7 @@ embeddings.index(txtai_data)
 #query = embeddings.search(search_word, 10)
 #print(query)
  
-#conn = psycopg2.connect(database="d87gct4qce5m66", user="wmnraxjkzeybsq", password="45e1f9ee429f7806fc9db20a1687c5201be86f244730fbd47db146e3d67aaf5d", host="ec2-3-229-165-146.compute-1.amazonaws.com", port=5432)
+conn = psycopg2.connect(database="d87gct4qce5m66", user="wmnraxjkzeybsq", password="45e1f9ee429f7806fc9db20a1687c5201be86f244730fbd47db146e3d67aaf5d", host="ec2-3-229-165-146.compute-1.amazonaws.com", port=5432)
 @app.route('/')
 def home():
     print("home")
