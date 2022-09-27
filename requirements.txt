@@ -9,7 +9,7 @@ click==8.1.3
 colorama==0.4.5
 confection==0.0.1
 config==0.5.1
-Config-Handler==0.1.0
+#Config-Handler==0.1.0
 cymem==2.0.6
 decorator==5.1.1
 elastic-transport==8.4.0
