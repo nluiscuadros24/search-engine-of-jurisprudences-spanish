@@ -79,5 +79,6 @@ urllib3==1.26.12
 wasabi==0.10.1
 wcwidth==0.2.5
 Werkzeug==2.2.2
--f https://download.pytorch.org/whl/torch_stable.html
-torch==1.12.1+cpu
+#-f https://download.pytorch.org/whl/torch_stable.html
+#torch==1.12.1+cpu
+torch==1.12.1
