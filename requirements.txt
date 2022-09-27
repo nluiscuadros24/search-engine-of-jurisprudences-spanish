@@ -21,7 +21,7 @@ Flask-Testing==0.7.1
 # librerias usadas en app.py
 collection==0.1.6
 Jinja2==3.0.1
-Werkzeug==0.15.5
+Werkzeug>=2.2.0
 txtai
 psycopg2==2.8.6
 sqlalchemy==1.4.7
