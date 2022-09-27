@@ -48,7 +48,7 @@ embeddings.index(txtai_data)
 #query = embeddings.search(search_word, 10)
 #print(query)
  
-conn = psycopg2.connect(database="dd242b78kgvt2u", user="ummdozfomcxlwg", password="58780a20e8453fdf1e0c37dbaa05c22954988bc27522d3f3a97e97af589217cf", host="ec2-3-93-206-109.compute-1.amazonaws.com", port=5433)
+conn = psycopg2.connect(database="d87gct4qce5m66", user="wmnraxjkzeybsq", password="45e1f9ee429f7806fc9db20a1687c5201be86f244730fbd47db146e3d67aaf5d", host="ec2-3-229-165-146.compute-1.amazonaws.com", port=5432)
 @app.route('/')
 def home():
     # Check if user is loggedin
@@ -93,7 +93,7 @@ def login():
         print(password)
  
         # Check if account exists using MySQL
-        cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
+        cursor.execute('SELECT * FROM userss WHERE username = %s', (username,))
         # Fetch one record and return result
         account = cursor.fetchone()
  
@@ -132,7 +132,7 @@ def register():
         _hashed_password = generate_password_hash(password)
  
         #Check if account exists using MySQL
-        cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
+        cursor.execute('SELECT * FROM userss WHERE username = %s', (username,))
         account = cursor.fetchone()
         print(account)
         # If account exists show error and validation checks
