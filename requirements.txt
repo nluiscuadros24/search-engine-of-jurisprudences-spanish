@@ -6,15 +6,28 @@ Flask-Script==2.0.5
 Flask-SQLAlchemy==2.4.0
 Flask-WTF==0.14.2
 Flask-User==1.0.1.5
+# Database
+Flask-SQLAlchemy==2.4.0
+Flask-Migrate==2.0.2
+Flask-Script==2.0.5
+# Forms
+Flask-WTF==0.14.2
+# User Management
+Flask-Login==0.4.0
+Flask-User==
+# Email
+Flask-Mail==0.9.1
+# Testing
+Flask-Testing==0.7.1
+# librerias usadas en app.py
 collection==0.1.6
 Jinja2==3.0.1
-Werkzeug
+Werkzeug==0.15.5
 txtai
 psycopg2==2.8.6
 sqlalchemy==1.4.7
 gunicorn==19.9.0
 pandas==1.5.0
-json
 jsonschema==3.2.0
 -f https://download.pytorch.org/whl/torch_stable.html
 torch==1.12.0+cpu
