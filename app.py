@@ -49,6 +49,7 @@ embeddings.index(txtai_data)
 #print(query)
  
 conn = psycopg2.connect(database="d87gct4qce5m66", user="wmnraxjkzeybsq", password="45e1f9ee429f7806fc9db20a1687c5201be86f244730fbd47db146e3d67aaf5d", host="ec2-3-229-165-146.compute-1.amazonaws.com", port=5432)
+
 @app.route('/')
 def home():
     # Check if user is loggedin
@@ -93,7 +94,7 @@ def login():
         print(password)
  
         # Check if account exists using MySQL
-        cursor.execute('SELECT * FROM userss WHERE username = %s', (username,))
+        cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
         # Fetch one record and return result
         account = cursor.fetchone()
  
@@ -189,4 +190,4 @@ def response():
     return redirect(url_for('response'))
  
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,  host='0.0.0.0')
