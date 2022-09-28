@@ -29,6 +29,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 df = pd.read_json('jurisprudences_1000.json')
 df = df.rename(columns={0: "x", 1: "texto"})
 dataset = df["texto"]
+dataset = dataset.apply(lambda x: re.sub(r'\n', ' ', x))
 txtai_data = []
 i=0
 for text in dataset:
