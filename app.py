@@ -26,6 +26,10 @@ SECRET_KEY = 'karpify123'
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 
+with open('jurisprudences_1000.json', encoding='utf8') as f:
+    df = json.load(f)
+# Convert json to dataframe
+df = pd.DataFrame(df)
 df = pd.read_json('jurisprudences_1000.json')
 df = df.rename(columns={0: "x", 1: "texto"})
 dataset = df["texto"]
@@ -49,8 +53,12 @@ embeddings.index(txtai_data)
 #query = embeddings.search(search_word, 10)
 #print(query)
  
+<<<<<<< HEAD
 conn = psycopg2.connect(database="d87gct4qce5m66", user="wmnraxjkzeybsq", password="45e1f9ee429f7806fc9db20a1687c5201be86f244730fbd47db146e3d67aaf5d", host="ec2-3-229-165-146.compute-1.amazonaws.com", port=5432)
 
+=======
+conn = psycopg2.connect(database="d66kt3el70imqq", user="skjrhrkmxmldey", password="64a8e238f3a08a513de91dce3b4559df285c294ed23225d14463c914ffc96d07", host="ec2-3-216-167-65.compute-1.amazonaws.com", port=5432)
+>>>>>>> 96fde09 (nuevos cambios)
 @app.route('/')
 def home():
     # Check if user is loggedin
@@ -191,4 +199,8 @@ def response():
     return redirect(url_for('response'))
  
 if __name__ == "__main__":
+<<<<<<< HEAD
     app.run(debug=True,  host='0.0.0.0')
+=======
+    app.run(host='0.0.0.0')
+>>>>>>> 96fde09 (nuevos cambios)
