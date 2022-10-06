@@ -46,13 +46,9 @@ with open('jurisprudences_1000.json', encoding='utf8') as f:
 #})
 #embeddings.index(txtai_data)
 
- 
-<<<<<<< HEAD
-#conn = psycopg2.connect(database="d87gct4qce5m66", user="wmnraxjkzeybsq", password="45e1f9ee429f7806fc9db20a1687c5201be86f244730fbd47db146e3d67aaf5d", host="ec2-3-229-165-146.compute-1.amazonaws.com", port=5432)
 
-=======
 conn = psycopg2.connect(database="d66kt3el70imqq", user="skjrhrkmxmldey", password="64a8e238f3a08a513de91dce3b4559df285c294ed23225d14463c914ffc96d07", host="ec2-3-216-167-65.compute-1.amazonaws.com", port=5432)
->>>>>>> 96fde09 (nuevos cambios)
+
 @app.route('/')
 def home():
     # Check if user is loggedin
