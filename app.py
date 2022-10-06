@@ -26,8 +26,8 @@ SECRET_KEY = 'karpify123'
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 
-with open('jurisprudences_1000.json', encoding='utf8') as f:
-    df = json.load(f)
+#with open('jurisprudences_1000.json', encoding='utf8') as f:
+    #df = json.load(f)
 # Convert json to dataframe
 #df = pd.DataFrame(df)
 #df = pd.read_json('jurisprudences_1000.json')

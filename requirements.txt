@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 alembic==1.8.1
 asttokens==2.0.8
 backcall==0.2.0
@@ -20,7 +18,6 @@ es-core-news-md @ https://github.com/explosion/spacy-models/releases/download/es
 executing==1.0.0
 faiss-cpu==1.7.2
 filelock==3.8.0
->>>>>>> 96fde09 (nuevos cambios)
 Flask==2.2.2
 gunicorn==20.1.0
 pandas==1.4.4
