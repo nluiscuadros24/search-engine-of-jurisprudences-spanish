@@ -198,8 +198,5 @@ def response():
     return redirect(url_for('response'))
  
 if __name__ == "__main__":
-<<<<<<< HEAD
-    app.run(debug=True,  host='0.0.0.0')
-=======
+
     app.run(host='0.0.0.0')
->>>>>>> 96fde09 (nuevos cambios)
