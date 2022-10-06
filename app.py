@@ -5,7 +5,7 @@ import psycopg2 #pip install psycopg2
 import psycopg2.extras
 import re 
 from werkzeug.security import generate_password_hash, check_password_hash
-#from elasticsearch import Elasticsearch, helpers 
+from elasticsearch import Elasticsearch, helpers 
 import os
 from subprocess import Popen, PIPE, STDOUT
 #import es_core_news_md
@@ -21,7 +21,7 @@ import json
 
 
 #get secret key
-
+es = Elasticsearch([{'host': '5.161.145.1', 'port': 9200, 'scheme': 'http'}], request_timeout=6000, retry_on_timeout=True)
 SECRET_KEY = 'karpify123'
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
@@ -29,32 +29,26 @@ app.config['SECRET_KEY'] = SECRET_KEY
 with open('jurisprudences_1000.json', encoding='utf8') as f:
     df = json.load(f)
 # Convert json to dataframe
-df = pd.DataFrame(df)
-df = pd.read_json('jurisprudences_1000.json')
-df = df.rename(columns={0: "x", 1: "texto"})
-dataset = df["texto"]
-dataset = dataset.apply(lambda x: re.sub(r'\n', ' ', x))
-txtai_data = []
-i=0
-for text in dataset:
-    txtai_data.append((i, text, None))
-    i=i+1
+#df = pd.DataFrame(df)
+#df = pd.read_json('jurisprudences_1000.json')
+#df = df.rename(columns={0: "x", 1: "texto"})
+#dataset = df["texto"]
+#dataset = dataset.apply(lambda x: re.sub(r'\n', ' ', x))
+#txtai_data = []
+#i=0
+#for text in dataset:
+#    txtai_data.append((i, text, None))
+#    i=i+1
 
-embeddings = Embeddings({
+#embeddings = Embeddings({
     
-    "path": "sentence-transformers/all-MiniLM-L6-v2"
-})
-embeddings.index(txtai_data)
+#    "path": "sentence-transformers/all-MiniLM-L6-v2"
+#})
+#embeddings.index(txtai_data)
 
-#importar modelo pickle
-#with open('model.pkl', 'rb') as f:
- #   model = pickle.load(f)
-#search_word = "prueba"
-#query = embeddings.search(search_word, 10)
-#print(query)
  
 <<<<<<< HEAD
-conn = psycopg2.connect(database="d87gct4qce5m66", user="wmnraxjkzeybsq", password="45e1f9ee429f7806fc9db20a1687c5201be86f244730fbd47db146e3d67aaf5d", host="ec2-3-229-165-146.compute-1.amazonaws.com", port=5432)
+#conn = psycopg2.connect(database="d87gct4qce5m66", user="wmnraxjkzeybsq", password="45e1f9ee429f7806fc9db20a1687c5201be86f244730fbd47db146e3d67aaf5d", host="ec2-3-229-165-146.compute-1.amazonaws.com", port=5432)
 
 =======
 conn = psycopg2.connect(database="d66kt3el70imqq", user="skjrhrkmxmldey", password="64a8e238f3a08a513de91dce3b4559df285c294ed23225d14463c914ffc96d07", host="ec2-3-216-167-65.compute-1.amazonaws.com", port=5432)
@@ -75,22 +69,31 @@ def ajaxlivesearch():
         search_word = request.form['query']
         print(search_word)
         if search_word == "":
-            query = print(txtai_data)
+            query = print(index="articles", body={"query": {"match_all": {}}})
             employee = query
         else:
-            query = embeddings.search(search_word, 10)
-            numrows = len(query)
-            employee = query
+            query_ = {
+                        "size": 5,
+                        "query": {
+                            "query_string": {"query": search_word}
+                        }
+                    }   
+
+            results = []
+            for result in es.search(index="articles", body=query_)["hits"]["hits"]:
+                source = result["_source"]
+                results.append((min(result["_score"], 18) / 18, source["title"]))
+
             data = []
-            for item in query:
+            for item in results:
                 row={}
-                row['score'] = item[1]
-                row['data'] = txtai_data[item[0]]
+                row['_score'] = item[0]
+                row['_source'] = item[1]
                 data.append(row)
                 print(data)
+                
 
     return jsonify({'htmlresponse': render_template('response.html', txtai_data=data)})
-
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():

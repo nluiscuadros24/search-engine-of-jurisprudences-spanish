@@ -1,16 +1,46 @@
 <table class="table table-striped custab">
-    <thead>
-        <tr>
-           <th>Score</th>
-           <th>Jurisprudencias</th>
-
-        
-    </thead>
-    <tbody>
-   
-  {% for row in txtai_data %}  
-     <tr>
-      <td>{{row.score}}</td>
-      <td>{{row.data}}</td>
-     </tr>
+	<thead>
+		<tr>
+		   <th>Score</th>
+		   <th>Jurisprudencias</th>
+		   <!--print data without \n in each row from data-->
+			 
+		</tr>
+	</thead>
+	<tbody>
+  {% for row in txtai_data %}
+	 <tr>
+	  <td>{{row.score}}</td>
+	  <td>{{row.data}}</td>
+	 </tr>
   {% endfor %}
+ </tbody>
+ </table>
+ <script>
+	 function replaceTildes(str){
+		//str = str.replaceAll('\n',"\\n");
+		str = str.replaceAll('\\u00ba',"nº");
+		str = str.replaceAll('\\u00aa',"ª");
+		str = str.replaceAll('\\u00e1',"&eacute;");
+		str = str.replaceAll('\\u00e9',"&eacute;");
+		str = str.replaceAll('\\u00ed',"&eacute;");
+		str = str.replaceAll('\\u00f3',"&oacute;");
+		str = str.replaceAll('\\u00fa',"&uacute;");
+		
+		return str;
+	}
+	var tbody = document.getElementsByTagName('tbody');
+	var rows = tbody[0].getElementsByTagName('tr');
+	var trs = [];
+	Array.from(rows).forEach(function(tr) {
+		var tmpStr = "";
+    	var tds = tr.getElementsByTagName('td');
+		var str= tds[1].innerHTML;
+		str = str.split(/\n/);
+		for(var i=0; i < str.length; i++){
+			tmpStr += "" +str[i]+ "</br>";
+		}
+		tmpStr = replaceTildes(tmpStr);
+		tds[1].innerHTML = tmpStr;
+	});
+ </script>
