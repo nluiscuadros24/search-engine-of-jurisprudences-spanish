@@ -26,33 +26,6 @@ SECRET_KEY = 'karpify123'
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 
-df = pd.read_json('tarjetas_revolving.json')
-df = df.rename(columns={0: "x", "jurisprudencias": "texto"})
-dataset = df["texto"]
-buffer = []
-rows = 0
-
-for x, text in enumerate(dataset):
-  # Article record
-  article = {"_id": x, "_index": "articles", "title": text}
-
-  # Buffer article
-  buffer.append(article)
-
-  # Increment number of articles processed
-  rows += 1
-
-  # Bulk load every 1000 records
-  if rows % 1000 == 0:
-    helpers.bulk(es, buffer)
-    buffer = []
-
-    print("Inserted {} articles".format(rows), end="\r")
-
-if buffer:
-  helpers.bulk(es, buffer)
-
-print("Total articles inserted: {}".format(rows))
 #txtai_data = []
 #i=0
 #for text in dataset:
@@ -105,7 +78,6 @@ def ajaxlivesearch():
                 row['_score'] = item[0]
                 row['_source'] = item[1]
                 data.append(row)
-                print(data)
                 
 
     return jsonify({'htmlresponse': render_template('response.html', txtai_data=data)})
