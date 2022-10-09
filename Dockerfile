@@ -8,6 +8,15 @@ ARG GPU
 # Set Python version (i.e. 3, 3.7, 3.8)
 ARG PYTHON_VERSION=3
 
+# install and use elasticsearch
+RUN apt-get update && apt-get install -y wget gnupg2
+RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+RUN echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list
+RUN apt-get update && apt-get install -y elasticsearch
+RUN update-rc.d elasticsearch defaults 95 10
+RUN /etc/init.d/elasticsearch start
+
+
 # List of txtai components to install
 ARG COMPONENTS=[all]
 
