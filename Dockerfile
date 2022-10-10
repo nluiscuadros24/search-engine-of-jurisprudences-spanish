@@ -25,6 +25,10 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 RUN \
+    # install psycopg2 dependencies
+    RUN apt-get update \
+    && apt-get -y install libpq-dev gcc \
+    && pip install psycopg2
     # Install required packages
     apt-get update && \
     apt-get -y --no-install-recommends install libgomp1 libsndfile1 gcc g++ python${PYTHON_VERSION} python${PYTHON_VERSION}-dev python3-pip && \
