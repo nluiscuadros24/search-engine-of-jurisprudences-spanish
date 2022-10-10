@@ -26,6 +26,35 @@ SECRET_KEY = 'karpify123'
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 
+buffer = []
+rows = 0
+
+dataset= pd.read_json("tarjetas_revolving.json")
+dataset = dataset.rename(columns={'jurisprudencias':'texto'})
+dataset = dataset["texto"][:826]
+dataset = dataset.dropna()
+dataset.isnull().sum()
+
+for x, text in enumerate(dataset):
+  # Article record
+  article = {"_id": x, "_index": "articles", "title": text}
+
+  # Buffer article
+  buffer.append(article)
+
+  # Increment number of articles processed
+  rows += 1
+
+  # Bulk load every 1000 records
+  if rows % 1000 == 0:
+    helpers.bulk(es, buffer)
+    buffer = []
+
+    print("Inserted {} articles".format(rows), end="\r")
+
+if buffer:
+  helpers.bulk(es, buffer)
+
 #txtai_data = []
 #i=0
 #for text in dataset:
